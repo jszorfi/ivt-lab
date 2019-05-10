@@ -23,7 +23,7 @@ public class GT4500 implements SpaceShip {
 
   public void setFireOrder(boolean first)
   {
-    wasPrimaryFiredLast = first
+    wasPrimaryFiredLast = first;
   }
 
   public boolean fireLaser(FiringMode firingMode) {
