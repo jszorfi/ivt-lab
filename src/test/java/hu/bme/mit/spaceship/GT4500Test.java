@@ -88,7 +88,7 @@ public class GT4500Test {
       assertEquals(false, result)
   }
 
-  public void fire_First()
+  public void fire_Second()
   {
     ship.setFireOrder(true);
     when(mockSecond.fire(1)).thenReturn(true);
@@ -97,6 +97,19 @@ public class GT4500Test {
 
     verify(mockFirst, times(0)).fire(1);
     verify(mockSecond, times(1)).fire(1);
+
+      assertEquals(true, result)
+  }
+
+  public void fire_First()
+  {
+    ship.setFireOrder(false);
+    when(mockFirst.fire(1)).thenReturn(true);
+
+    boolean result = ship.fireTorpedo(FiringMode.Single);
+
+    verify(mockFirst, times(1)).fire(1);
+    verify(mockSecond, times(0)).fire(1);
 
       assertEquals(true, result)
   }
