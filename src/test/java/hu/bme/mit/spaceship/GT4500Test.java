@@ -44,6 +44,8 @@ public class GT4500Test {
     assertEquals(true, result);
   }
 
+
+
   @Test
   public void fire_empty()
   {
@@ -52,8 +54,8 @@ public class GT4500Test {
 
     boolean result = ship.fireTorpedo(FiringMode.Single);
 
-    verify(mockFirst, times(1)).mockFirst.isEmpty();
-    verify(mockSecond, times(1)).mockSecond.isEmpty();
+    verify(mockFirst, times(1)).isEmpty();
+    verify(mockSecond, times(1)).isEmpty();
 
       assertEquals(false, result)
   }
@@ -66,8 +68,8 @@ public class GT4500Test {
 
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
-    verify(mockFirst, times(1)).mockFirst.isEmpty();
-    verify(mockSecond, times(1)).mockSecond.isEmpty();
+    verify(mockFirst, times(1)).isEmpty();
+    verify(mockSecond, times(1)).isEmpty();
 
       assertEquals(false, result)
   }
@@ -80,10 +82,23 @@ public class GT4500Test {
 
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
-    verify(mockFirst, times(1)).mockFirst.fire(1);
-    verify(mockSecond, times(1)).mockSecond.fire(1);
+    verify(mockFirst, times(1)).fire(1);
+    verify(mockSecond, times(1)).fire(1);
 
       assertEquals(false, result)
+  }
+
+  public void fire_First()
+  {
+    ship.setFireOrder(true);
+    when(mockSecond.fire(1)).thenReturn(true);
+
+    boolean result = ship.fireTorpedo(FiringMode.Single);
+
+    verify(mockFirst, times(0)).fire(1);
+    verify(mockSecond, times(1)).fire(1);
+
+      assertEquals(true, result)
   }
 
 }
