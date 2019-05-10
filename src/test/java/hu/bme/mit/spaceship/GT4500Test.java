@@ -9,10 +9,15 @@ import static org.mockito.Mockito.*;
 public class GT4500Test {
 
   private GT4500 ship;
+  private TorpedoStore mockFirst;
+  private TorpedoStore mockSecond;
 
   @BeforeEach
   public void init(){
+    mockFirst = mock(TorpedoStore.class);
+    mockSecond = mock(TorpedoStore.class);
     this.ship = new GT4500();
+    this.ship.setTorpedoStore(mockFirst, mockSecond);
   }
 
   @Test
