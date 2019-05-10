@@ -52,12 +52,12 @@ public class GT4500Test {
     when(mockFirst.isEmpty()).thenReturn(true);
     when(mockSecond.isEmpty()).thenReturn(true);
 
-    boolean result = ship.fireTorpedo(FiringMode.Single);
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
 
     verify(mockFirst, times(1)).isEmpty();
     verify(mockSecond, times(1)).isEmpty();
 
-      assertEquals(false, result)
+      assertEquals(false, result);
   }
 
   @Test
@@ -68,10 +68,7 @@ public class GT4500Test {
 
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
-    verify(mockFirst, times(1)).isEmpty();
-    verify(mockSecond, times(1)).isEmpty();
-
-      assertEquals(false, result)
+      assertEquals(false, result);
   }
 
   @Test
@@ -82,10 +79,7 @@ public class GT4500Test {
 
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
-    verify(mockFirst, times(1)).fire(1);
-    verify(mockSecond, times(1)).fire(1);
-
-      assertEquals(false, result)
+      assertEquals(false, result);
   }
 
   public void fire_Second()
@@ -93,12 +87,12 @@ public class GT4500Test {
     ship.setFireOrder(true);
     when(mockSecond.fire(1)).thenReturn(true);
 
-    boolean result = ship.fireTorpedo(FiringMode.Single);
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
 
     verify(mockFirst, times(0)).fire(1);
     verify(mockSecond, times(1)).fire(1);
 
-      assertEquals(true, result)
+      assertEquals(true, result);
   }
 
   public void fire_First()
@@ -106,12 +100,12 @@ public class GT4500Test {
     ship.setFireOrder(false);
     when(mockFirst.fire(1)).thenReturn(true);
 
-    boolean result = ship.fireTorpedo(FiringMode.Single);
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
 
     verify(mockFirst, times(1)).fire(1);
     verify(mockSecond, times(0)).fire(1);
 
-      assertEquals(true, result)
+      assertEquals(true, result);
   }
 
 }
