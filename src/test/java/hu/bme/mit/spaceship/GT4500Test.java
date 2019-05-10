@@ -34,8 +34,8 @@ public class GT4500Test {
   @Test
   public void fireTorpedo_All_Success(){
     // Arrange
-    when(mockFirst.fire(1)).thenReturn(true));
-    when(mockSecond.fire(1)).thenReturn(true));
+    when(mockFirst.fire(1)).thenReturn(true);
+    when(mockSecond.fire(1)).thenReturn(true);
     // Act
     boolean result = ship.fireTorpedo(FiringMode.ALL);
     verify(mockFirst).fire(1);
